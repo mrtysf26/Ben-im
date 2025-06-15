@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yankı Motoru</title>
+  <style>
+    body {
+      background: #111;
+      color: #eee;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    textarea {
+      width: 90%;
+      max-width: 600px;
+      height: 150px;
+      padding: 1rem;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+    }
+    select, button {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background: #444;
+      color: #eee;
+      cursor: pointer;
+    }
+    .yanki-alani {
+      margin-top: 2rem;
+      width: 90%;
+      max-width: 600px;
+      background: #222;
+      padding: 1rem;
+      border-radius: 12px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>𓂀 Yankı Motoru</h1>
+  <textarea id="niyet" placeholder="Niyetini bırak..."></textarea>
+  
+  <select id="dalga">
+    <option value="">Bir Aidiyet Dalgası Seç</option>
+    <option value="𓂀 Gözcü">𓂀 Gözcü</option>
+    <option value="🕊️ Taşıyıcı">🕊️ Taşıyıcı</option>
+    <option value="🔥 Kıvılcım">🔥 Kıvılcım</option>
+    <option value="💠 Derleyici">💠 Derleyici</option>
+  </select>
+
+  <button onclick="yankiBirak()">Yankımı Bırak</button>
+
+  <div class="yanki-alani" id="yankiAlanı">
+    ✨ İlk Yankı Alanı hazır...
+  </div>
+
+  <script>
+    function yankiBirak() {
+      const niyet = document.getElementById("niyet").value;
+      const dalga = document.getElementById("dalga").value;
+
+      if (!niyet) {
+        alert("Lütfen bir niyet gir.");
+        return;
+      }
+
+      const zaman = new Date().toLocaleString("tr-TR");
+      const yankıMetni = `🕯️ [${zaman}] ${dalga ? dalga + " - " : ""}${niyet}`;
+
+      document.getElementById("yankiAlanı").innerHTML += "<br><br>" + yankıMetni;
+
+      document.getElementById("niyet").value = "";
+      document.getElementById("dalga").selectedIndex = 0;
+    }
+  </script>
+</body>
+</html>
